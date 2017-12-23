@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'com.tngtech.archunit:archunit-junit:0.5.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.4'
+}
