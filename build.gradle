@@ -5,6 +5,11 @@ repositories {
 }
 
 dependencies {
+    // These are the 'production' dependencies of the Demo src/main/java files -> just for Demo purposes, otherwise irrelevant
+    compile 'org.apache.geronimo.specs:geronimo-ejb_3.1_spec:1.0'
+    compile 'org.apache.geronimo.specs:geronimo-jpa_2.0_spec:1.0'
+
+    // This is the only dependency necessary, to run ArchUnit -> substitute 'archunit-junit' with 'archunit' if you don't use JUnit 4
     testCompile 'com.tngtech.archunit:archunit-junit:0.5.0'
 }
 
