@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
-public class InterfaceRules {
+public class InterfaceRulesTest {
 
     @Test
     public void interfaces_should_not_have_names_ending_with_the_word_interface() {

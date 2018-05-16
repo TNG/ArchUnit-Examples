@@ -4,7 +4,6 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Set;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 
@@ -21,7 +20,6 @@ import com.tngtech.archunit.example.ClassViolatingSessionBeanRules;
 import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
-import org.junit.Before;
 import org.junit.Test;
 
 import static com.tngtech.archunit.base.DescribedPredicate.not;
@@ -34,12 +32,8 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
 public class SessionBeanRulesTest {
-    private JavaClasses classes;
 
-    @Before
-    public void setUp() throws Exception {
-        classes = new ClassFileImporter().importPackagesOf(ClassViolatingSessionBeanRules.class);
-    }
+    private final JavaClasses classes = new ClassFileImporter().importPackagesOf(ClassViolatingSessionBeanRules.class);
 
     @Test
     public void stateless_session_beans_should_not_have_state() {
@@ -62,7 +56,7 @@ public class SessionBeanRulesTest {
             not(originOwnerEqualsTargetOwner()).or(originNeitherConstructorNorPostConstruct());
 
     private static DescribedPredicate<JavaAccess<?>> originNeitherConstructorNorPostConstruct() {
-        return Get.origin().is(not(constructor()).and(not(annotatedWith(PostConstruct.class))));
+        return Get.origin().is(not(constructor()).and(not(annotatedWith("javax.annotation.PostConstruct"))));
     }
 
     private static final DescribedPredicate<JavaClass> HAVE_LOCAL_BEAN_SUBCLASS =

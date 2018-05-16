@@ -3,19 +3,14 @@ package com.tngtech.archunit.exampletest;
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.example.ClassViolatingCodingRules;
-import org.junit.Before;
 import org.junit.Test;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
 public class LayerDependencyRulesTest {
-    private JavaClasses classes;
 
-    @Before
-    public void setUp() throws Exception {
-        classes = new ClassFileImporter().importPackagesOf(ClassViolatingCodingRules.class);
-    }
+    private final JavaClasses classes = new ClassFileImporter().importPackagesOf(ClassViolatingCodingRules.class);
 
     @Test
     public void services_should_not_access_controllers() {
