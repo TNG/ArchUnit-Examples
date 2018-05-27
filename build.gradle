@@ -14,5 +14,9 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.4'
+    gradleVersion = '4.7'
+}
+
+tasks.withType(AbstractCompile) {
+    options.compilerArgs += ["--add-modules", "java.xml.ws.annotation"]
 }
