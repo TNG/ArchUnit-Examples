@@ -1,0 +1,1 @@
+include 'example-plain', 'example-junit4', 'example-junit5'

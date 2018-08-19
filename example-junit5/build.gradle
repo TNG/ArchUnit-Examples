@@ -1,0 +1,8 @@
+dependencies {
+    testCompile 'com.tngtech.archunit:archunit-junit5-api:0.9.0'
+    testRuntime 'com.tngtech.archunit:archunit-junit5-engine:0.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}
