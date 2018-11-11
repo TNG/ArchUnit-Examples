@@ -1,6 +1,6 @@
 dependencies {
-    testCompile 'com.tngtech.archunit:archunit-junit5-api:0.9.1'
-    testRuntime 'com.tngtech.archunit:archunit-junit5-engine:0.9.1'
+    testCompile 'com.tngtech.archunit:archunit-junit5-api:0.9.2'
+    testRuntime 'com.tngtech.archunit:archunit-junit5-engine:0.9.2'
 }
 
 test {
