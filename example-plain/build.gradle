@@ -1,5 +1,5 @@
 dependencies {
     testCompile 'junit:junit:4.12' // We will use JUnit to run the tests, but for this example it is irrelevant, might as well be TestNG
 
-    testCompile 'com.tngtech.archunit:archunit:0.10.0'
+    testCompile 'com.tngtech.archunit:archunit:0.10.1'
 }
