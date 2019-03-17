@@ -3,6 +3,7 @@ package com.tngtech.archunit.exampletest;
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
 import com.tngtech.archunit.example.ClassViolatingCodingRules;
+import com.tngtech.archunit.lang.CompositeArchRule;
 import org.junit.Test;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
@@ -10,6 +11,7 @@ import static com.tngtech.archunit.library.GeneralCodingRules.ACCESS_STANDARD_ST
 import static com.tngtech.archunit.library.GeneralCodingRules.NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS;
 import static com.tngtech.archunit.library.GeneralCodingRules.NO_CLASSES_SHOULD_THROW_GENERIC_EXCEPTIONS;
 import static com.tngtech.archunit.library.GeneralCodingRules.NO_CLASSES_SHOULD_USE_JAVA_UTIL_LOGGING;
+import static com.tngtech.archunit.library.GeneralCodingRules.NO_CLASSES_SHOULD_USE_JODATIME;
 
 public class CodingRulesTest {
 
@@ -34,4 +36,16 @@ public class CodingRulesTest {
     public void classes_should_not_use_java_util_logging() {
         NO_CLASSES_SHOULD_USE_JAVA_UTIL_LOGGING.check(classes);
     }
+
+    @Test
+    public void classes_should_not_use_jodatime() {
+        NO_CLASSES_SHOULD_USE_JODATIME.check(classes);
+    }
+
+    @Test
+    public void no_classes_should_access_standard_streams_or_throw_generic_exceptions() {
+        CompositeArchRule.of(NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS)
+                .and(NO_CLASSES_SHOULD_THROW_GENERIC_EXCEPTIONS).check(classes);
+    }
+
 }

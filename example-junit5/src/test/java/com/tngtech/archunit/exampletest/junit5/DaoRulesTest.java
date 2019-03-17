@@ -1,5 +1,7 @@
 package com.tngtech.archunit.exampletest.junit5;
 
+import java.sql.SQLException;
+
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 
@@ -9,6 +11,7 @@ import com.tngtech.archunit.lang.ArchRule;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
+import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noMethods;
 
 @AnalyzeClasses(packages = "com.tngtech.archunit.example")
 public class DaoRulesTest {
@@ -27,4 +30,10 @@ public class DaoRulesTest {
             noClasses().that().resideOutsideOfPackage("..dao..")
                     .should().accessClassesThat().areAssignableTo(EntityManager.class)
                     .as("Only DAOs may use the " + EntityManager.class.getSimpleName());
+
+
+    @ArchTest
+    static final ArchRule DAOs_must_not_throw_SQLException =
+            noMethods().that().areDeclaredInClassesThat().haveNameMatching(".*Dao")
+                    .should().declareThrowableOfType(SQLException.class);
 }
