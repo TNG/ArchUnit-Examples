@@ -1,9 +1,9 @@
 package com.tngtech.archunit.exampletest.junit5;
 
-import com.tngtech.archunit.example.SomeOtherBusinessInterface;
-import com.tngtech.archunit.example.core.CoreSatellite;
-import com.tngtech.archunit.example.core.HighSecurity;
-import com.tngtech.archunit.example.core.VeryCentralCore;
+import com.tngtech.archunit.example.layers.SomeOtherBusinessInterface;
+import com.tngtech.archunit.example.layers.core.CoreSatellite;
+import com.tngtech.archunit.example.layers.core.HighSecurity;
+import com.tngtech.archunit.example.layers.core.VeryCentralCore;
 import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
@@ -12,7 +12,7 @@ import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClass;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.theClass;
 
-@AnalyzeClasses(packages = "com.tngtech.archunit.example")
+@AnalyzeClasses(packages = "com.tngtech.archunit.example.layers")
 public class SingleClassTest {
 
     @ArchTest

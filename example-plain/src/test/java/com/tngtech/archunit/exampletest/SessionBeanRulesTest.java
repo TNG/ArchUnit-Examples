@@ -16,7 +16,7 @@ import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.domain.JavaFieldAccess;
 import com.tngtech.archunit.core.domain.properties.HasOwner;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
-import com.tngtech.archunit.example.ClassViolatingSessionBeanRules;
+import com.tngtech.archunit.example.layers.ClassViolatingSessionBeanRules;
 import com.tngtech.archunit.lang.ArchCondition;
 import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
@@ -44,7 +44,7 @@ public class SessionBeanRulesTest {
 
     @Test
     public void business_interface_implementations_should_be_unique() {
-        classes().that(are(BUSINESS_INTERFACES)).should(HAVE_AN_UNIQUE_IMPLEMENTATION).check(classes);
+        classes().that(are(BUSINESS_INTERFACES)).should(HAVE_A_UNIQUE_IMPLEMENTATION).check(classes);
     }
 
     private static final DescribedPredicate<JavaFieldAccess> TARGET_IS_STATELESS_SESSION_BEAN =
@@ -83,8 +83,8 @@ public class SessionBeanRulesTest {
     private static final DescribedPredicate<JavaClass> BUSINESS_INTERFACES =
             INTERFACES.and(HAVE_LOCAL_BEAN_SUBCLASS).as("business interfaces");
 
-    private static final ArchCondition<JavaClass> HAVE_AN_UNIQUE_IMPLEMENTATION =
-            new ArchCondition<JavaClass>("have an unique implementation") {
+    private static final ArchCondition<JavaClass> HAVE_A_UNIQUE_IMPLEMENTATION =
+            new ArchCondition<JavaClass>("have a unique implementation") {
                 @Override
                 public void check(JavaClass businessInterface, ConditionEvents events) {
                     events.add(new SimpleConditionEvent(businessInterface,

@@ -4,7 +4,7 @@ import com.tngtech.archunit.junit.AnalyzeClasses;
 import com.tngtech.archunit.junit.ArchRules;
 import com.tngtech.archunit.junit.ArchTest;
 
-@AnalyzeClasses(packages = "com.tngtech.archunit.example")
+@AnalyzeClasses(packages = "com.tngtech.archunit.example.layers")
 class RuleLibraryTest {
     @ArchTest
     static final ArchRules LIBRARY = ArchRules.in(RuleSetsTest.class);

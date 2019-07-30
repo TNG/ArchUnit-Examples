@@ -2,16 +2,16 @@ package com.tngtech.archunit.exampletest;
 
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
-import com.tngtech.archunit.example.AbstractController;
-import com.tngtech.archunit.example.MyController;
-import com.tngtech.archunit.example.MyService;
+import com.tngtech.archunit.example.layers.AbstractController;
+import com.tngtech.archunit.example.layers.MyController;
+import com.tngtech.archunit.example.layers.MyService;
 import org.junit.Test;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 
 public class NamingConventionTest {
 
-    private final JavaClasses classes = new ClassFileImporter().importPackages("com.tngtech.archunit.example");
+    private final JavaClasses classes = new ClassFileImporter().importPackages("com.tngtech.archunit.example.layers");
 
     @Test
     public void services_should_be_prefixed() {

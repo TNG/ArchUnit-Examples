@@ -7,7 +7,7 @@ import com.tngtech.archunit.junit.ArchUnitRunner;
 import org.junit.runner.RunWith;
 
 @RunWith(ArchUnitRunner.class)
-@AnalyzeClasses(packages = "com.tngtech.archunit.example")
+@AnalyzeClasses(packages = "com.tngtech.archunit.example.layers")
 public class RuleLibraryTest {
     @ArchTest
     public static final ArchRules LIBRARY = ArchRules.in(RuleSetsTest.class);
