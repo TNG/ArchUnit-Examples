@@ -1,5 +1,5 @@
 dependencies {
-    testCompile 'com.tngtech.archunit:archunit-junit5:0.13.0'
+    testCompile 'com.tngtech.archunit:archunit-junit5:0.13.1'
 }
 
 test {
