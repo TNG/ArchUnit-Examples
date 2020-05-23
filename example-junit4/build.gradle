@@ -1,3 +1,5 @@
 dependencies {
-    testCompile 'com.tngtech.archunit:archunit-junit4:0.13.1'
+    testCompile('com.tngtech.archunit:archunit-junit4:0.14.0') {
+        exclude group: 'com.tngtech.archunit', module: 'archunit-junit'
+    }
 }
