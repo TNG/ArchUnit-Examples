@@ -1,7 +1,5 @@
 dependencies {
-    testCompile('com.tngtech.archunit:archunit-junit5:0.14.0') {
-        exclude group: 'com.tngtech.archunit', module: 'archunit-junit'
-    }
+    testImplementation 'com.tngtech.archunit:archunit-junit5:0.14.1'
 }
 
 test {
