@@ -15,7 +15,7 @@ typical architectural constraints (like layer dependencies).
 You can run them with Gradle
 
 ```
-./gradlew clean build
+./gradlew build
 ```
 
 Otherwise the tests can be run directly from any IDE.
