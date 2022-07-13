@@ -1,7 +1,6 @@
 package com.tngtech.archunit.exampletest.junit4;
 
 import com.tngtech.archunit.base.DescribedPredicate;
-import com.tngtech.archunit.core.domain.JavaClass;
 import com.tngtech.archunit.example.layers.controller.one.UseCaseOneTwoController;
 import com.tngtech.archunit.example.layers.controller.two.UseCaseTwoController;
 import com.tngtech.archunit.junit.AnalyzeClasses;
@@ -11,6 +10,7 @@ import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.library.dependencies.Slice;
 import org.junit.runner.RunWith;
 
+import static com.tngtech.archunit.base.DescribedPredicate.alwaysTrue;
 import static com.tngtech.archunit.core.domain.properties.HasName.Predicates.nameMatching;
 import static com.tngtech.archunit.library.dependencies.SlicesRuleDefinition.slices;
 
@@ -34,12 +34,12 @@ public class SlicesIsolationTest {
             slices().matching("..controller.(*)..").namingSlices("Controller $1")
                     .as("Controllers").should().notDependOnEachOther()
                     .ignoreDependency(UseCaseOneTwoController.class, UseCaseTwoController.class)
-                    .ignoreDependency(nameMatching(".*controller\\.three.*"), DescribedPredicate.<JavaClass>alwaysTrue());
+                    .ignoreDependency(nameMatching(".*controller\\.three.*"), alwaysTrue());
 
     private static DescribedPredicate<Slice> containDescription(final String descriptionPart) {
         return new DescribedPredicate<Slice>("contain description '%s'", descriptionPart) {
             @Override
-            public boolean apply(Slice input) {
+            public boolean test(Slice input) {
                 return input.getDescription().contains(descriptionPart);
             }
         };

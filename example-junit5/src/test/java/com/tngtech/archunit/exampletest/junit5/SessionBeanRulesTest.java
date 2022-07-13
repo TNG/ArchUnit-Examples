@@ -1,7 +1,5 @@
 package com.tngtech.archunit.exampletest.junit5;
 
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.Set;
 
 import javax.ejb.Local;
@@ -29,6 +27,7 @@ import static com.tngtech.archunit.core.domain.properties.CanBeAnnotated.Predica
 import static com.tngtech.archunit.lang.conditions.ArchPredicates.are;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
+import static java.util.stream.Collectors.joining;
 
 @AnalyzeClasses(packages = "com.tngtech.archunit.example.layers")
 public class SessionBeanRulesTest {
@@ -60,13 +59,8 @@ public class SessionBeanRulesTest {
     private static DescribedPredicate<JavaClass> haveLocalBeanSubclass() {
         return new DescribedPredicate<JavaClass>("have subclass that is a local bean") {
             @Override
-            public boolean apply(JavaClass input) {
-                for (JavaClass subclass : input.getAllSubclasses()) {
-                    if (isLocalBeanImplementation(subclass, input)) {
-                        return true;
-                    }
-                }
-                return false;
+            public boolean test(JavaClass input) {
+                return input.getAllSubclasses().stream().anyMatch(subclass -> isLocalBeanImplementation(subclass, input));
             }
 
             // NOTE: We assume that in this project by convention @Local is always used as @Local(type) with exactly
@@ -102,12 +96,7 @@ public class SessionBeanRulesTest {
                     return "";
                 }
 
-                Deque<JavaClass> toJoin = new LinkedList<>(implementations);
-                StringBuilder sb = new StringBuilder(toJoin.pollFirst().getSimpleName());
-                for (JavaClass javaClass : toJoin) {
-                    sb.append(", ").append(javaClass.getSimpleName());
-                }
-                return sb.toString();
+                return implementations.stream().map(JavaClass::getSimpleName).collect(joining(", "));
             }
         };
     }

@@ -2,7 +2,7 @@ package com.tngtech.archunit.exampletest.junit5;
 
 import java.net.URL;
 
-import com.tngtech.archunit.base.PackageMatchers;
+import com.tngtech.archunit.core.domain.PackageMatchers;
 import com.tngtech.archunit.example.plantuml.catalog.ProductCatalog;
 import com.tngtech.archunit.example.plantuml.order.Order;
 import com.tngtech.archunit.example.plantuml.product.Product;
@@ -14,9 +14,9 @@ import static com.tngtech.archunit.core.domain.Dependency.Predicates.dependency;
 import static com.tngtech.archunit.core.domain.JavaClass.Functions.GET_PACKAGE_NAME;
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.equivalentTo;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
-import static com.tngtech.archunit.library.plantuml.PlantUmlArchCondition.Configurations.consideringAllDependencies;
-import static com.tngtech.archunit.library.plantuml.PlantUmlArchCondition.Configurations.consideringOnlyDependenciesInAnyPackage;
-import static com.tngtech.archunit.library.plantuml.PlantUmlArchCondition.Configurations.consideringOnlyDependenciesInDiagram;
+import static com.tngtech.archunit.library.plantuml.PlantUmlArchCondition.Configuration.consideringAllDependencies;
+import static com.tngtech.archunit.library.plantuml.PlantUmlArchCondition.Configuration.consideringOnlyDependenciesInAnyPackage;
+import static com.tngtech.archunit.library.plantuml.PlantUmlArchCondition.Configuration.consideringOnlyDependenciesInDiagram;
 import static com.tngtech.archunit.library.plantuml.PlantUmlArchCondition.adhereToPlantUmlDiagram;
 
 @AnalyzeClasses(packages = "com.tngtech.archunit.example.plantuml")
