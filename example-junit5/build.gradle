@@ -1,5 +1,9 @@
 dependencies {
     testImplementation 'com.tngtech.archunit:archunit-junit5:1.2.1'
+
+    // ArchUnit does not actually need the JUnit Jupiter API,
+    // but some IDEs support executing tests more conveniently when it is present.
+    testCompileOnly 'org.junit.jupiter:junit-jupiter-api:5.10.1'
 }
 
 test {
