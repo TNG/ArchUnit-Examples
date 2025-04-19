@@ -12,13 +12,17 @@ All example rules you find within `src/test` refer to classes from `src/main`.
 These tests are all designed to fail, to demonstrate how production code could violate
 typical architectural constraints (like layer dependencies).
 
-You can run them with Gradle
+You can run them
 
-```
-./gradlew build
-```
-
-Otherwise the tests can be run directly from any IDE.
+* with Gradle
+  ```sh
+  ./gradlew test
+  ```
+* with Maven
+  ```sh
+  mvn test 
+  ```
+* or directly from your IDE.
 
 ## Regarding issues
 
