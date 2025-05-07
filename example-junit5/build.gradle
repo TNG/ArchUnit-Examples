@@ -1,5 +1,5 @@
 dependencies {
-    testImplementation 'com.tngtech.archunit:archunit-junit5:1.4.0'
+    testImplementation 'com.tngtech.archunit:archunit-junit5:1.4.1'
 }
 
 test {
