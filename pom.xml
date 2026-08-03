@@ -68,6 +68,7 @@
     <modules>
         <module>example-junit4</module>
         <module>example-junit5</module>
+        <module>example-junit6</module>
         <module>example-plain</module>
     </modules>
 </project>

@@ -1,0 +1,13 @@
+dependencies {
+    testImplementation 'com.tngtech.archunit:archunit-junit6:1.5.0-SNAPSHOT'
+
+    // ArchUnit does not actually need the JUnit Jupiter API,
+    // but some IDEs support executing tests more conveniently when it is present.
+    testCompileOnly 'org.junit.jupiter:junit-jupiter-api:6.1.2'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:6.1.2'
+}
+
+test {
+    useJUnitPlatform()
+}
