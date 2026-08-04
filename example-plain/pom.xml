@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.tngtech.archunit</groupId>
         <artifactId>archunit-examples</artifactId>
-        <version>1.4.2</version>
+        <version>1.5.0</version>
     </parent>
     <artifactId>archunit-example-plain</artifactId>
     <dependencies>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.tngtech.archunit</groupId>
             <artifactId>archunit</artifactId>
-            <version>1.4.2</version>
+            <version>1.5.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -1,5 +1,5 @@
 dependencies {
-    testImplementation 'com.tngtech.archunit:archunit-junit6:1.5.0-SNAPSHOT'
+    testImplementation 'com.tngtech.archunit:archunit-junit6:1.5.0'
 
     // ArchUnit does not actually need the JUnit Jupiter API,
     // but some IDEs support executing tests more conveniently when it is present.
